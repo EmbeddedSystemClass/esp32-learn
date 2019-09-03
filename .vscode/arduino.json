@@ -1,0 +1,8 @@
+{
+    "port": "COM6",
+    "output": "../build",
+    "board": "Espressif:esp32:esp32doit-devkit-v1",
+    "configuration": "FlashFreq=80,UploadSpeed=921600,DebugLevel=none",
+    "programmer": "ArduinoISP",
+    "sketch": "freertos\\freertos1.ino"
+}
