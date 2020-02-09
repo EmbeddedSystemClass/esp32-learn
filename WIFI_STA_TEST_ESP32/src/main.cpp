@@ -1,7 +1,7 @@
 #include<WiFi.h>
 
-#define WIFI_STA_NAME "AESFIBER"
-#define WIFI_STA_PASS "     "
+#define WIFI_STA_NAME "Easy_AES"
+#define WIFI_STA_PASS "29062007"
 
 void setup() {
   Serial.begin(115200);
