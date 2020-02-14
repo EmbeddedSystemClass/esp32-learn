@@ -44,6 +44,7 @@ char m_str[3];
 void OLED_Task(void *pvParam)
 {
     uint8_t m = 24;
+    uint8_t nextpos=0;
     U8G2_SH1106_128X64_NONAME_1_HW_I2C u8g2(U8G2_R0, /* reset=*/U8X8_PIN_NONE);
     u8g2.begin();
     while (1)
@@ -58,12 +59,12 @@ void OLED_Task(void *pvParam)
             u8g2.setFont(u8g2_font_8x13_me);
             u8g2.drawStr(0, 15, ">");
             u8g2.drawStr(10, 15, mqtt_server);
-            u8g2.drawStr(0, 30, "LED: ");
-            u8g2.drawStr(33, 30, ledString);
-            u8g2.drawStr(0, 45, "Te : ");
-            u8g2.drawStr(33, 45, tempString);
-            u8g2.drawStr(0, 60, "Hu : ");
-            u8g2.drawStr(33, 60, humString);
+            nextpos = u8g2.drawStr(0, 30, "LED: ");
+            u8g2.drawStr(nextpos, 30, ledString);
+            nextpos = u8g2.drawStr(0, 45, "Te : ");
+            u8g2.drawStr(nextpos, 45, tempString);
+            nextpos = u8g2.drawStr(0, 60, "Hu : ");
+            u8g2.drawStr(nextpos, 60, humString);
 
         } while (u8g2.nextPage());
         delay(100);
