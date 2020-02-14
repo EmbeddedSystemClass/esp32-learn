@@ -15,6 +15,14 @@
 const char *ssid = "Easy_AES";
 const char *password = "29062007";
 
+const int potPin = 34;
+const int TempPin = 34;
+const int HumidPin = 35;
+
+// variable for storing the potentiometer value
+int TempValue = 0;
+int HumidValue = 0;
+
 // Add your MQTT Broker IP address, example:
 //const char* mqtt_server = "192.168.1.144";
 const char *mqtt_server = "172.104.35.200";
@@ -210,10 +218,11 @@ void loop()
         lastMsg = now;
 
         // Temperature in Celsius
-        temperature = 29;
+        temperature = analogRead(TempPin) / 40.96;
         // Uncomment the next line to set temperature in Fahrenheit
         // (and comment the previous temperature line)
         //temperature = 1.8 * bme.readTemperature() + 32; // Temperature in Fahrenheit
+
 
         // Convert the value to a char array
         dtostrf(temperature, 1, 2, tempString);
@@ -221,7 +230,7 @@ void loop()
         Serial.println(tempString);
         client.publish("esp32/temperature", tempString);
 
-        humidity = 55;
+        humidity =  analogRead(HumidPin) / 40.96;
 
         // Convert the value to a char array
         dtostrf(humidity, 1, 2, humString);
