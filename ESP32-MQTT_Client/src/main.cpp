@@ -1,5 +1,6 @@
 #include <Arduino.h>
 #include <WiFi.h>
+#include <WiFiMulti.h>
 #include <PubSubClient.h>
 #include <U8g2lib.h>
 
@@ -39,12 +40,12 @@ void callback(char *topic, byte *message, unsigned int length);
 TaskHandle_t hMQQT_Task = NULL;
 TaskHandle_t hOLED_Task = NULL;
 char m_str[3];
-
+WiFiMulti wifiMulti;
 
 void OLED_Task(void *pvParam)
 {
     uint8_t m = 24;
-    uint8_t nextpos=0;
+    uint8_t nextpos = 0;
     U8G2_SH1106_128X64_NONAME_1_HW_I2C u8g2(U8G2_R0, /* reset=*/U8X8_PIN_NONE);
     u8g2.begin();
     while (1)
@@ -82,7 +83,23 @@ void setup()
     // default settings
     // (you can also pass in a Wire library object like &Wire2)
 
-    setup_wifi();
+    //setup_wifi();
+
+    delay(10);
+
+    wifiMulti.addAP("Easy_AES", "29062007");
+    wifiMulti.addAP("Koson note", "agow7185");
+    wifiMulti.addAP("ssid_from_AP_3", "your_password_for_AP_3");
+
+    Serial.println("Connecting Wifi...");
+    if (wifiMulti.run() == WL_CONNECTED)
+    {
+        Serial.println("");
+        Serial.println("WiFi connected");
+        Serial.println("IP address: ");
+        Serial.println(WiFi.localIP());
+    }
+
     client.setServer(mqtt_server, 1883);
     client.setCallback(callback);
 
