@@ -95,8 +95,8 @@ void setup()
 
     delay(10);
 
-    wifiMulti.addAP("Easy_AES", "29062007");
-    wifiMulti.addAP("Koson note", "agow7185");
+    wifiMulti.addAP("Easy_AES", "   ");
+    wifiMulti.addAP("Koson note", "   ");
     wifiMulti.addAP("ssid_from_AP_3", "your_password_for_AP_3");
 
     Serial.println("Connecting Wifi...");
