@@ -95,9 +95,9 @@ void setup()
 
     delay(10);
 
-    wifiMulti.addAP("Easy_AES", "   ");
+    wifiMulti.addAP("Easy_AES", "29062007");
     wifiMulti.addAP("Koson note", "   ");
-    wifiMulti.addAP("ssid_from_AP_3", "your_password_for_AP_3");
+    wifiMulti.addAP("Natapon.T", "11111111");
 
     Serial.println("Connecting Wifi...");
     if (wifiMulti.run() == WL_CONNECTED)
