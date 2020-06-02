@@ -96,7 +96,7 @@ void setup()
     delay(10);
 
     wifiMulti.addAP("Easy_AES", "29062007");
-    wifiMulti.addAP("Koson note", "   ");
+    wifiMulti.addAP("Koson note", "agow7185");
     wifiMulti.addAP("Natapon.T", "11111111");
 
     Serial.println("Connecting Wifi...");
